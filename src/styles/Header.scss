@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #12a8cd;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #0e0d0d;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    gap: 15px;
+
+    .menu-button {
+      background-color: #fff;
+
+      border-radius: 7px;
+      padding: 5px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.1s;
+
+      &:hover {
+        background-color: #a8e3ed;
+      }
+
+      &:active {
+        background-color: #ddd;
+      }
+    }
+  }
+}

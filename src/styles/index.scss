@@ -1,0 +1,11 @@
+@use "./Header.scss" as *;
+@use "./Footer.scss" as *;
+@use "./WordCard.scss" as *;
+@use "./WordList.scss" as *;
+@use "./App.scss" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
