@@ -1,13 +1,17 @@
+@use "./vars.scss" as *;
+@use "./mixins.scss" as *;
+
 .footer {
-  background-color: #12a8cd;
-  padding: 10px 20px;
+  background-color: $primary-color;
+  padding: $padding-default 20px;
   text-align: center;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid $border-color;
   margin-top: 20px;
+  width: 100%;
 
   p {
     margin: 0;
-    color: #0e0d0d;
-    font-size: 1rem;
+    color: $secondary-color;
+    font-size: $font-size-default;
   }
 }

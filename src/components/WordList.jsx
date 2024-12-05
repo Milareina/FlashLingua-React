@@ -9,10 +9,19 @@ const WordList = () => {
         
     ];
 
+    const handleCheck = (word) => {
+        console.log(`Проверка слова: ${word}`);
+    };
+
     return (
         <div className="word-list">
             {words.map((item, index) => (
-                <WordCard key={index} word={item.word} translation={item.translation} />
+                <WordCard
+                    key={index}
+                    word={item.word}
+                    translation={item.translation}
+                    onCheck={() => handleCheck(item.word)} 
+                />
             ))}
         </div>
     );

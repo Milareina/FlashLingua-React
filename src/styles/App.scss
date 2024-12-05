@@ -1,14 +1,23 @@
+@use "./vars.scss" as *;
+@use "./mixins.scss" as *;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .app {
-  display: flex;
-  flex-direction: column;
+  @include flex-center(column);
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $font-main;
+  background-color: $light-gray;
 }
 
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  background-color: #fafafa;
+h1 {
+  text-align: center;
+  font-size: $font-size-large;
+  margin-top: 25px;
+}
+
+section {
+  min-height: 500px;
 }

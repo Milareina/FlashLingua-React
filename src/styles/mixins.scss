@@ -1,0 +1,17 @@
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin box-shadow-hover {
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+  }
+}
+
+@mixin transition($properties: all, $time: 0.3s) {
+  transition: $properties $time;
+}

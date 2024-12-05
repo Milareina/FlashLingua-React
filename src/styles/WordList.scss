@@ -1,6 +1,13 @@
+@use "./vars.scss" as *;
+@use "./mixins.scss" as *;
+
 .word-list {
-  display: flex;
+  @include flex-center(row, center, center);
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  gap: 25px;
+}
+
+.card-section {
+  @include flex-center(row, center, center);
+  height: 100%;
 }
