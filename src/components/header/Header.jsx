@@ -1,5 +1,5 @@
-import icon from '../assets/icon.png';
-import '../styles/Header.scss';
+import icon from '../../assets/icon.png';
+import './Header.module.scss';
 
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
         <header className="header">
             <div className="header__logo">
                 <img src={icon} alt="App Logo" />
-                <h1>Flashcards</h1>
+                <h1>FlashLingua</h1>
             </div>
             <nav className="header__menu">
                 <button className="menu-button">Список слов</button>

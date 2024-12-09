@@ -1,8 +1,8 @@
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import WordList from './components/WordList';
-import WordTable from './components/WordTable';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import WordList from './components/wordList/WordList';
+import WordTable from './components/wordTable/WordTable';
 import './styles/App.scss';
 import words from './data/words.json';
 

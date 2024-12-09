@@ -1,5 +1,5 @@
-@use "./vars.scss" as *;
-@use "./mixins.scss" as *;
+@use "/src/styles/_vars.scss" as *;
+@use "/src/styles/_mixins.scss" as *;
 
 .word-card {
   @include flex-center(column, center, center);
@@ -13,6 +13,26 @@
   @include transition(transform 0.2s);
   @include box-shadow-hover;
 
+  .word {
+    font-size: 1.5rem;
+  }
+
+  .transcription {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+  }
+
+  .translation {
+    color: $primary-color;
+    visibility: hidden;
+    font-size: 1.2rem;
+    margin-top: 10px;
+
+    &.visible {
+      visibility: visible;
+    }
+  }
   h3 {
     margin: 0 0 5px;
     color: #333;

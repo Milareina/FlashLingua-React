@@ -1,5 +1,5 @@
-@use "./vars.scss" as *;
-@use "./mixins.scss" as *;
+@use "/src/styles/_vars.scss" as *;
+@use "/src/styles/_mixins.scss" as *;
 
 .footer {
   background-color: $primary-color;

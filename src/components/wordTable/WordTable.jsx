@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "../styles/WordTable.scss";
+import PropTypes from "prop-types";
+import "./WordTable.module.scss";
 
 
 function WordTable({ words }) {
@@ -88,5 +89,10 @@ function WordTable({ words }) {
             ))}
         </div>
     );
+}
+
+WordTable.propTypes = {
+    words: PropTypes.array.isRequired,
+    
 }
 export default WordTable;
