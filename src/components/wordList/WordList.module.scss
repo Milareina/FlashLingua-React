@@ -2,12 +2,12 @@
 @use "/src/styles/_mixins.scss" as *;
 
 .word-list {
-  @include flex-center(row, center, center);
+  @include flex-center();
   flex-wrap: wrap;
   gap: 25px;
 }
 
 .card-section {
-  @include flex-center(row, center, center);
+  @include flex-center();
   height: 100%;
 }

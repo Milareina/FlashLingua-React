@@ -15,3 +15,9 @@
 @mixin transition($properties: all, $time: 0.3s) {
   transition: $properties $time;
 }
+
+@mixin position($top: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}

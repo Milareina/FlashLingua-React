@@ -1,10 +1,10 @@
 
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import WordList from './components/wordList/WordList';
 import WordTable from './components/wordTable/WordTable';
-import './styles/App.scss';
+import WordPointer from './components/wordPointer/WordPointer';
 import words from './data/words.json';
+import './styles/App.scss';
 
 const App = () => {
     return (
@@ -13,11 +13,12 @@ const App = () => {
             <main className="main">
             <h1>Карточки слов</h1>
                 <section className="card-section">
-                <WordList /> </section>
+                    <WordPointer words={words} />
+                </section>
                 <section>
-      <h1>Список слов</h1>
-      <WordTable words={words} />
-    </section>
+            <h1>Список слов</h1>
+                    <WordTable words={words} />
+                </section>
             </main>
             <Footer />
         </div>
