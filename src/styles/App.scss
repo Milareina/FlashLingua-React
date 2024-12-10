@@ -12,12 +12,19 @@
   background-color: $light-gray;
 }
 
-h1 {
+.main {
+  padding-top: 70px;
+  margin: 0 auto;
+  max-width: 800px;
   text-align: center;
-  font-size: $font-size-large;
-  margin-top: 25px;
 }
-
 section {
   min-height: 500px;
+}
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.menu {
+  position: sticky;
 }
