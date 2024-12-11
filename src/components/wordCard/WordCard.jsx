@@ -1,25 +1,33 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import PropTypes from 'prop-types';
 import './WordCard.module.scss';
 
-const WordCard = ({ word, transcription, translation, onCheck }) => {
-    const [isTranslationVisible, setIsTranslationVisible] = useState(false); 
+const WordCard = ({ 
+    english, 
+    transcription,
+    russian, 
+    onViewTranslation, 
+    isTranslationVisible,
+    
+ }) => {
+    const buttonRef = useRef(null);
 
-    const handleShowTranslation = () => {
-        setIsTranslationVisible(true);
-        if (onCheck) onCheck(); 
-    };
+    useEffect(() => {
+        
+        if (buttonRef.current && !isTranslationVisible) {
+            buttonRef.current.focus();}
+    }, [isTranslationVisible]);
 
     return (
         <div className="word-card">
-            <div className="word">{word}</div>
+            <div className="word">{english}</div>
             <div className="transcription">{transcription}</div>
             {isTranslationVisible ? (
                 <div className="translation visible">
-                    {translation}
+                    {russian}
                 </div>
             ) : (
-                <button onClick={handleShowTranslation} className="check-button">
+                <button ref={buttonRef} onClick={onViewTranslation} className="check-button">
                     Проверить
                 </button>
             )}
@@ -28,12 +36,16 @@ const WordCard = ({ word, transcription, translation, onCheck }) => {
 };
 
 WordCard.propTypes = {
-    word: PropTypes.string.isRequired,         
+    english: PropTypes.string.isRequired,         
     transcription: PropTypes.string.isRequired,
-    translation: PropTypes.string.isRequired, 
-    onCheck: PropTypes.func.isRequired,
-
+    russian: PropTypes.string.isRequired, 
+    onViewTranslation: PropTypes.func.isRequired,
+    isTranslationVisible: PropTypes.bool.isRequired,
+    
 };
-
+WordCard.defaultProps = {
+    onCheck: null,
+    onViewTranslation: null,
+};
 export default WordCard;
 

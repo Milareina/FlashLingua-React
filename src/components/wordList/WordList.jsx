@@ -1,26 +1,21 @@
-
+import wordsData from '../../data/words.json'; 
 import WordCard from '../wordCard/WordCard';
 import './WordList.module.scss';
 
 const WordList = () => {
-    const words = [
-        { word: 'Hello', transcription: '[həˈləʊ]', translation: 'Привет' },
-        
-    ];
-
     const handleCheck = (word) => {
         console.log(`Проверка слова: ${word}`);
     };
 
     return (
         <div className="word-list">
-            {words.map((item, index) => (
+            {wordsData.map((item) => (
                 <WordCard
-                key={index}
-                word={item.word}
-                transcription={item.transcription}
-                translation={item.translation}
-                onCheck={() => handleCheck(item.word)}
+                    key={item.id} 
+                    word={item.english}
+                    transcription={item.transcription}
+                    translation={item.russian}
+                    onCheck={() => handleCheck(item.english)} 
                 />
             ))}
         </div>

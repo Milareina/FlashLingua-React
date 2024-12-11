@@ -9,7 +9,11 @@
   @include flex-center(column);
   min-height: 100vh;
   font-family: $font-main;
-  background-color: $light-gray;
+  background: -webkit-linear-gradient(
+    315deg,
+    rgba(18, 168, 205, 0.5) 8%,
+    rgba(246, 127, 127, 0.8) 84%
+  );
 }
 
 .main {

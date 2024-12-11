@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import WordCard from "../wordList/WordList"; 
+import WordCard from "../wordCard/WordCard"; 
 import LeftArrow from "../../assets/left-arrow.svg";
 import RightArrow from "../../assets/right-arrow.svg";
 import "./WordPointer.module.scss";
@@ -9,11 +9,14 @@ const WordPointer = ({ words, initialIndex }) => {
     const [currentIndex, setCurrentIndex] = useState(initialIndex);
     const [isAnimating, setIsAnimating] = useState(false);
     const [direction, setDirection] = useState("");
+    const [learnedWords, setLearnedWords] = useState(new Set());
+    const [isTranslationVisible, setIsTranslationVisible] = useState(false);
 
     const handleNext = () => {
         if (isAnimating) return;
         setDirection("next");
         setIsAnimating(true);
+        setIsTranslationVisible(false);
         setTimeout(() => {
             setCurrentIndex((prevIndex) =>
                 prevIndex < words.length - 1 ? prevIndex + 1 : 0
@@ -26,12 +29,21 @@ const WordPointer = ({ words, initialIndex }) => {
         if (isAnimating) return;
         setDirection("prev");
         setIsAnimating(true);
+        setIsTranslationVisible(false);
         setTimeout(() => {
             setCurrentIndex((prevIndex) =>
                 prevIndex > 0 ? prevIndex - 1 : words.length - 1
             );
             setIsAnimating(false);
         }, 300);
+    };
+    const handleViewTranslation = () => {
+        setLearnedWords((prevLearned) => {
+            const updatedLearned = new Set(prevLearned);
+            updatedLearned.add(currentIndex); 
+            return updatedLearned;
+        });
+        setIsTranslationVisible(true);
     };
 
     if (!words || words.length === 0) {
@@ -40,6 +52,7 @@ const WordPointer = ({ words, initialIndex }) => {
 
     return (
         <div className="word-pointer">
+            <div className="learned-words">Изучено слов: {learnedWords.size} / {words.length}</div>
             <button className="arrow-btn left" onClick={handlePrev}>
                 <img src={LeftArrow} alt="Стрелка назад" />
             </button>
@@ -50,14 +63,16 @@ const WordPointer = ({ words, initialIndex }) => {
                         isAnimating ? `slide-${direction}` : ""
                     }`}
                 >
-                    <WordCard {...words[currentIndex]} />
+                    <WordCard
+                        english={words[currentIndex].english}
+                        transcription={words[currentIndex].transcription}
+                        russian={words[currentIndex].russian}
+                        isTranslationVisible={isTranslationVisible} 
+                        onViewTranslation={handleViewTranslation}
+                    />
                 </div>
             </div>
-
-            <div className="card-index">
-                {currentIndex + 1} / {words.length}
-            </div>
-
+            
             <button className="arrow-btn right" onClick={handleNext}>
                 <img src={RightArrow} alt="Стрелка вперед" />
             </button>
@@ -68,9 +83,9 @@ const WordPointer = ({ words, initialIndex }) => {
 WordPointer.propTypes = {
     words: PropTypes.arrayOf(
         PropTypes.shape({
-            word: PropTypes.string.isRequired,
+            english: PropTypes.string.isRequired,
             transcription: PropTypes.string,
-            translation: PropTypes.string.isRequired,
+            russian: PropTypes.string.isRequired,
         })
     ),
     initialIndex: PropTypes.number,
