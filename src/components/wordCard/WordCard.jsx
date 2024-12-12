@@ -15,7 +15,8 @@ const WordCard = ({
     useEffect(() => {
         
         if (buttonRef.current && !isTranslationVisible) {
-            buttonRef.current.focus();}
+            buttonRef.current.focus();
+        }
     }, [isTranslationVisible]);
 
     return (

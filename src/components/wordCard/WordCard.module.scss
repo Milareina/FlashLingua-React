@@ -60,5 +60,9 @@
     &:active {
       background-color: #0c7a91;
     }
+    &:focus {
+      border: 2px solid $primary-color;
+      box-shadow: 0 0 11px 7px rgba(232, 118, 139, 0.8);
+    }
   }
 }

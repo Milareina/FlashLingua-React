@@ -81,5 +81,13 @@
         }
       }
     }
+    .error-border {
+      border: 2px solid $error-color;
+    }
+    .error-message {
+      color: $error-color;
+      font-size: $font-size-small;
+      margin-top: 4px;
+    }
   }
 }

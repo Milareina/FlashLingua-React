@@ -64,6 +64,7 @@ const WordPointer = ({ words, initialIndex }) => {
                     }`}
                 >
                     <WordCard
+                        key={currentIndex}
                         english={words[currentIndex].english}
                         transcription={words[currentIndex].transcription}
                         russian={words[currentIndex].russian}
