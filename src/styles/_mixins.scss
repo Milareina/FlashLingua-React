@@ -21,3 +21,25 @@
   top: $top;
   left: $left;
 }
+@mixin main-button(
+  $background-color: #12a8cd,
+  $border-radius: 7px,
+  $color: white
+) {
+  background-color: $background-color;
+  color: $color;
+  border: none;
+  border-radius: $border-radius;
+
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #f67f7f;
+  }
+
+  &:active {
+    background-color: #0c7a91;
+  }
+}

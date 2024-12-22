@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import WordCard from "../wordCard/WordCard"; 
+import WordCard from "../../components/wordCard/WordCard"; 
 import LeftArrow from "../../assets/left-arrow.svg";
 import RightArrow from "../../assets/right-arrow.svg";
+import { WordContext } from "../../context/WordContext";
 import "./WordPointer.module.scss";
 
-const WordPointer = ({ words, initialIndex }) => {
-    const [currentIndex, setCurrentIndex] = useState(initialIndex);
+const WordPointer = () => {
+    const { words } = useContext(WordContext); 
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [direction, setDirection] = useState("");
     const [learnedWords, setLearnedWords] = useState(new Set());
@@ -49,6 +51,7 @@ const WordPointer = ({ words, initialIndex }) => {
     if (!words || words.length === 0) {
         return <p>Список слов пуст</p>;
     }
+
 
     return (
         <div className="word-pointer">

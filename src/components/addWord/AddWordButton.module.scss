@@ -1,0 +1,21 @@
+@use "/src/styles/_vars.scss" as *;
+@use "/src/styles/_mixins.scss" as *;
+
+.add-word-btn {
+  @include main-button;
+  padding: 10px 15px;
+  &:focus {
+    border: 2px solid $primary-color;
+    box-shadow: 0 0 11px 7px rgba(232, 118, 139, 0.8);
+  }
+
+  &:disabled {
+    background-color: $gray-color;
+    cursor: not-allowed;
+  }
+}
+.error-message {
+  color: $error-color;
+  font-size: $font-size-small;
+  margin-top: 5px;
+}

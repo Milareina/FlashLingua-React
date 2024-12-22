@@ -1,13 +1,31 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
+import AddWordForm from "../../components/addWord/AddWordButton";
+import { WordContext } from "../../context/WordContext";
+import { fetchWords } from "../../api/Api";
 import "./WordTable.module.scss";
 
-
-function WordTable({ words }) {
+function WordTable() {
+    const { words, setWords, handleUpdateWord, handleDeleteWord } = useContext(WordContext);
     const [editingWord, setEditingWord] = useState(null); 
     const [tempWord, setTempWord] = useState({}); 
     const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        const loadWords = async () => {
+            const wordsFromApi = await fetchWords();
+            setWords(wordsFromApi);
+        };
+        loadWords();
+    }, [setWords]);
+
+    const handleWordAdded = () => {
+        fetchWords().then((newWords) => {
+            setWords(newWords);
+        });
+    };
+
 
     const handleEdit = (word) => {
         setEditingWord(word.id);
@@ -21,7 +39,7 @@ function WordTable({ words }) {
         setErrors({});
     };
 
-    const handleSave = () => {
+    const handleSave = async () => {
         const validationErrors = validateFields(tempWord);
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
@@ -29,7 +47,7 @@ function WordTable({ words }) {
             return;
         }
 
-        console.log("Сохранено слово:", tempWord); 
+        await handleUpdateWord(editingWord, tempWord);
         setEditingWord(null);
     };
 
@@ -56,7 +74,6 @@ function WordTable({ words }) {
             return errors;
     };
     
-
         const renderEditableRow = () => {
             const isSaveDisabled = Object.keys(errors).length > 0 || 
                 !tempWord.english || 
@@ -118,12 +135,16 @@ function WordTable({ words }) {
                 <button onClick={() => handleEdit(word)} className="edit-btn">
                     Изменить
                 </button>
-                <button className="delete-btn">Удалить</button>
+                <button onClick={() => handleDeleteWord(word.id)} className="delete-btn">Удалить</button>
             </div>
         </>
     );
 
     return (
+
+        <div>
+            <AddWordForm onWordAdded={handleWordAdded} />
+                
         <div className="word-grid">
             
             <div className="header">#</div>
@@ -140,6 +161,7 @@ function WordTable({ words }) {
                         : renderReadOnlyRow(word)}
                 </React.Fragment>
             ))}
+        </div>
         </div>
     );
 }
