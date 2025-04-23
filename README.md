@@ -4,7 +4,7 @@
 
 <div id="russian-version">
 
-# FlashLingua
+# 🧠FlashLingua
 
 FlashLingua - это веб-приложение для изучения иностранных слов, созданное с использованием React и Vite.
 
@@ -48,7 +48,7 @@ npm start
 
 <div id="english-version">
   
-# FlashLingua
+# 🧠FlashLingua
 
 FlashLingua is a web application for learning foreign words, built using React and Vite.
 
